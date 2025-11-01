@@ -2,44 +2,44 @@
   "nodes": [
     {
       "parameters": {
-        "public": true,
+        "public": false,
         "options": {
           "loadPreviousSession": "memory"
         }
       },
-      "id": "88cdc2c3-bbe5-4aa2-af41-d7c7d6ac8fa0",
+      "id": "2073b0a3-fbe3-4e06-a832-4cba2332df9c",
       "name": "Chat Trigger",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.3,
       "position": [
-        2736,
-        320
+        -736,
+        48
       ],
       "webhookId": "5e2a4eb1-96ae-40d1-be6d-2f7c9330a2b3"
     },
     {
       "parameters": {},
-      "id": "7d5cef2d-982e-4120-b0b3-1b0ab5c0c220",
+      "id": "de23eb83-8307-433e-a784-68f74ee12503",
       "name": "Conversation Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        2808,
-        544
+        -656,
+        272
       ]
     },
     {
       "parameters": {
-        "text": "You are a Business Intelligence Orchestrator that MUST delegate complex queries to specialized agents.\n\nWhen you receive a business query:\n1. ALWAYS identify which specialized agents are needed\n2. CALL the appropriate agent tools to gather their analysis\n3. Synthesize their findings into a comprehensive recommendation\n\nAvailable specialized agents (YOU MUST USE THESE TOOLS):\n- market_analysis_agent: For market research, trends, competition, market sizing, customer segmentation\n- operations_audit_agent: For process optimization, efficiency analysis, workflow improvement, operational excellence  \n- financial_modeling_agent: For financial projections, ROI calculations, revenue/cost analysis, financial planning\n- lead_generation_agent: For customer acquisition strategies, sales funnel optimization, growth tactics\n\nFor complex business decisions, you MUST call multiple relevant agents and coordinate their findings. Do not attempt to answer complex queries without consulting the specialized agents.",
+        "text": "You are a Business Intelligence Orchestrator. Analyze the business query and identify which specialized agents are needed. Delegate tasks to: Market Analysis Agent (for market research, trends, competition), Operations Audit Agent (for process optimization, efficiency analysis), Financial Modeling Agent (for financial projections, ROI calculations), or Lead Generation Agent (for customer acquisition strategies). Coordinate their findings and synthesize a comprehensive business recommendation.",
         "options": {}
       },
-      "id": "1b46f062-b7ba-44c5-9200-967e93158a59",
+      "id": "93f33f0e-6712-4824-b339-c4b2c5939458",
       "name": "Primary Orchestrator Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        3656,
-        320
+        0,
+        0
       ]
     },
     {
@@ -52,20 +52,15 @@
         },
         "options": {}
       },
-      "id": "202c1b00-7e82-42c7-9211-400f4773c1cd",
+      "id": "447cf68e-8d6e-4662-8e1d-ac1151fc459d",
       "name": "OpenAI Model - Orchestrator",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3088,
-        544
+        -384,
+        272
       ],
-      "credentials": {
-        "openAiApi": {
-          "id": "DPYNI17H6OPfgwHm",
-          "name": "OpenAi account"
-        }
-      }
+      "credentials": {}
     },
     {
       "parameters": {
@@ -77,20 +72,15 @@
         },
         "options": {}
       },
-      "id": "f8413bd5-825c-46d3-a6b4-b4de19cf62e9",
+      "id": "4f97ab95-5dc2-406a-9ff1-4454245766e6",
       "name": "OpenAI Model - Market Analysis",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3232,
-        752
+        -240,
+        480
       ],
-      "credentials": {
-        "openAiApi": {
-          "id": "DPYNI17H6OPfgwHm",
-          "name": "OpenAi account"
-        }
-      }
+      "credentials": {}
     },
     {
       "parameters": {
@@ -102,20 +92,15 @@
         },
         "options": {}
       },
-      "id": "f2ecf5e4-6942-44f1-b20c-8188f9e41815",
+      "id": "f21cf491-e5e4-4cb4-9cdf-3b8b5828e957",
       "name": "OpenAI Model - Operations",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3584,
-        752
+        112,
+        480
       ],
-      "credentials": {
-        "openAiApi": {
-          "id": "DPYNI17H6OPfgwHm",
-          "name": "OpenAi account"
-        }
-      }
+      "credentials": {}
     },
     {
       "parameters": {
@@ -127,20 +112,15 @@
         },
         "options": {}
       },
-      "id": "5952f5c7-5858-435a-a532-c55ea650c815",
+      "id": "e5bb15da-8182-4be1-8351-cd5436ab47e3",
       "name": "OpenAI Model - Financial",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3792,
-        752
+        320,
+        480
       ],
-      "credentials": {
-        "openAiApi": {
-          "id": "DPYNI17H6OPfgwHm",
-          "name": "OpenAi account"
-        }
-      }
+      "credentials": {}
     },
     {
       "parameters": {
@@ -152,20 +132,40 @@
         },
         "options": {}
       },
-      "id": "4e8f3ef2-e9f6-4c29-bb79-c45b8f390e70",
+      "id": "dd2f92c5-d654-43d0-813b-628a57c61673",
       "name": "OpenAI Model - Lead Gen",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        4160,
-        752
+        688,
+        480
       ],
-      "credentials": {
-        "openAiApi": {
-          "id": "DPYNI17H6OPfgwHm",
-          "name": "OpenAi account"
-        }
-      }
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "description": "Search the web for current information, market data, industry trends, competitor information, and business intelligence. Use this when you need up-to-date information from the internet.",
+        "jsCode": "const query = $input.item.json.query || \"business intelligence\";\n\n// Simulated web research - in production, integrate with actual search APIs\nconst results = {\n  query: query,\n  timestamp: new Date().toISOString(),\n  sources: [\n    { title: \"Industry Report\", url: \"https://example.com/report\", summary: \"Market analysis data\" },\n    { title: \"Competitor Analysis\", url: \"https://example.com/competitor\", summary: \"Competitive landscape insights\" }\n  ],\n  insights: `Research results for: ${query}. Note: Connect to real search APIs (Google, Bing, etc.) for production use.`\n};\n\nreturn { json: results };"
+      },
+      "id": "1142a8ee-08df-481b-b033-fb31f2b58144",
+      "name": "Web Research Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.3,
+      "position": [
+        -96,
+        480
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "975c6722-081c-4c9b-804e-b7f3f825a746",
+      "name": "Calculator Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        480,
+        480
+      ]
     },
     {
       "parameters": {
@@ -173,13 +173,13 @@
         "text": "Conduct comprehensive market analysis based on the business query. Research market trends, competitive landscape, target audience, market size, and growth opportunities. Use the web research tool to gather current market data. Provide actionable insights and strategic recommendations.",
         "options": {}
       },
-      "id": "c4f4f97d-8c13-460e-8e3e-668e60f5e431",
+      "id": "acfcc5df-1bea-4504-9d11-bdeb0553ced8",
       "name": "market_analysis_agent",
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        3216,
-        544
+        -256,
+        272
       ]
     },
     {
@@ -188,13 +188,13 @@
         "text": "Perform a thorough operations audit based on the business query. Analyze current processes, identify inefficiencies, bottlenecks, and improvement opportunities. Recommend process optimizations, automation opportunities, and operational best practices. Focus on scalability and efficiency.",
         "options": {}
       },
-      "id": "8285d8c1-145b-495e-8306-8770b2ff4c5a",
+      "id": "530265e9-76e5-41ee-85b4-55fd69bca14c",
       "name": "operations_audit_agent",
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        3504,
-        544
+        32,
+        272
       ]
     },
     {
@@ -203,13 +203,13 @@
         "text": "Create detailed financial models and analysis based on the business query. Calculate ROI, project revenues and costs, analyze profitability, assess financial risks, and provide budget recommendations. Use the calculator tool for precise calculations. Present findings with clear financial metrics and recommendations.",
         "options": {}
       },
-      "id": "767a59f6-68bb-4f9d-b115-f54716c8954f",
+      "id": "d2e5ae0e-dc8f-4166-9a50-2685f4d9a1d0",
       "name": "financial_modeling_agent",
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        3792,
-        544
+        320,
+        272
       ]
     },
     {
@@ -218,13 +218,13 @@
         "text": "Develop comprehensive lead generation strategies based on the business query. Identify target customer profiles, recommend acquisition channels, design conversion funnels, suggest growth tactics, and provide actionable lead generation plans. Focus on scalable and cost-effective customer acquisition methods.",
         "options": {}
       },
-      "id": "e42f48b7-b5bd-4b2b-8e56-6558ea1c92f4",
+      "id": "c08010ba-5870-4964-aaf9-eb37f76b2eeb",
       "name": "lead_generation_agent",
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        4080,
-        544
+        608,
+        272
       ]
     },
     {
@@ -232,36 +232,11 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        4368,
-        544
+        368,
+        80
       ],
-      "id": "e3e087f3-32d8-4d9b-aaf5-6c6aa6931936",
+      "id": "05a89fc9-4905-4bc8-98fc-bc9de1de615e",
       "name": "Think"
-    },
-    {
-      "parameters": {
-        "description": "Search the web for current information, market data, industry trends, competitor information, and business intelligence. Use this when you need up-to-date information from the internet.",
-        "jsCode": "const query = $input.item.json.query || \"business intelligence\";\n\n// Simulated web research - in production, integrate with actual search APIs\nconst results = {\n  query: query,\n  timestamp: new Date().toISOString(),\n  sources: [\n    { title: \"Industry Report\", url: \"https://example.com/report\", summary: \"Market analysis data\" },\n    { title: \"Competitor Analysis\", url: \"https://example.com/competitor\", summary: \"Competitive landscape insights\" }\n  ],\n  insights: `Research results for: ${query}. Note: Connect to real search APIs (Google, Bing, etc.) for production use.`\n};\n\nreturn { json: results };"
-      },
-      "id": "3665b472-839a-46e6-a934-93c32f6e2aa3",
-      "name": "web_research_tool",
-      "type": "@n8n/n8n-nodes-langchain.toolCode",
-      "typeVersion": 1.3,
-      "position": [
-        3376,
-        752
-      ]
-    },
-    {
-      "parameters": {},
-      "id": "4b572fd7-c389-4092-8f17-7532bdfb93a3",
-      "name": "calculator_tool",
-      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
-      "typeVersion": 1,
-      "position": [
-        3952,
-        752
-      ]
     }
   ],
   "connections": {
@@ -347,6 +322,28 @@
         ]
       ]
     },
+    "Web Research Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "market_analysis_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "financial_modeling_agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "market_analysis_agent": {
       "ai_tool": [
         [
@@ -396,28 +393,6 @@
         [
           {
             "node": "Primary Orchestrator Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "web_research_tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "market_analysis_agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "calculator_tool": {
-      "ai_tool": [
-        [
-          {
-            "node": "financial_modeling_agent",
             "type": "ai_tool",
             "index": 0
           }
