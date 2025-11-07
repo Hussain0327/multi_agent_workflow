@@ -108,24 +108,24 @@ Your task:
 5. Note any limitations or gaps in the current research
 
 Provide a concise synthesis (300-500 words) organized by key themes.
-Use this format:
+Use this EXACT citation format: (Source: Author et al., Year)
+
+Example: "Customer churn is driven primarily by poor onboarding (Source: Smith et al., 2024)."
 
 **Key Research Themes:**
 
-1. [Theme 1 - e.g., "Pricing Model Selection"]
-   - Finding: [Insight from research]
-   - Evidence: [Author et al., Year]
-   - Implication: [Business application]
+1. [Theme 1]
+   - Finding with citation (Source: Author et al., Year)
+   - Implication for business
 
 2. [Theme 2]
-   ...
+   - Finding with citation (Source: Author et al., Year)
 
 **Evidence-Based Recommendations:**
-- [Specific recommendation based on research]
-- [Another recommendation]
+- [Recommendation] (Source: Author et al., Year)
 
 **Knowledge Gaps:**
-- [Areas where research is limited or conflicting]
+- [Gaps in research]
 """
 
         synthesis = self.gpt5.generate(
