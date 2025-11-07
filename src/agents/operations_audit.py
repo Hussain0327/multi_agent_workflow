@@ -65,7 +65,10 @@ Analyze current processes, identify inefficiencies, and recommend optimizations 
 Provide specific, actionable recommendations with implementation priorities."""
 
         if research_context:
-            user_prompt += "\n\nIMPORTANT: Reference the academic sources above in your analysis using proper citations."
+            user_prompt += "\n\nCRITICAL CITATION REQUIREMENTS:"
+            user_prompt += "\n- Use the EXACT citation format: (Source: Author et al., Year)"
+            user_prompt += "\n- Cite sources for EVERY major claim or recommendation"
+            user_prompt += "\n- Include a 'References' section at the end with full citations"
 
         try:
             return self.gpt5.generate(
