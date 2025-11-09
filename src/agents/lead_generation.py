@@ -1,13 +1,13 @@
 """Lead Generation Agent - specializes in customer acquisition and growth strategies."""
 from typing import Dict, Any
-from src.gpt5_wrapper import GPT5Wrapper
+from src.unified_llm import UnifiedLLM
 
 
 class LeadGenerationAgent:
     """Specialized agent for lead generation and customer acquisition strategies."""
 
     def __init__(self):
-        self.gpt5 = GPT5Wrapper()
+        self.llm = UnifiedLLM(agent_type="leadgen")
         self.name = "lead_generation_agent"
         self.description = "Specialized agent for lead generation strategies, customer acquisition, sales funnel optimization, and growth hacking."
 
@@ -77,12 +77,12 @@ Focus on scalable, cost-effective customer acquisition methods."""
             user_prompt += "\n- Include a 'References' section at the end with full citations"
 
         try:
-            return self.gpt5.generate(
+            return self.llm.generate(
                 input_text=user_prompt,
                 instructions=self.system_prompt,
                 reasoning_effort="low",  # Fixed: "medium" uses all tokens for reasoning, no output
                 text_verbosity="high",
-                max_output_tokens=1500
+                max_tokens=1500
             )
 
         except Exception as e:

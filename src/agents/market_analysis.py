@@ -1,13 +1,13 @@
 """Market Analysis Agent - specializes in market research and competitive analysis."""
 from typing import Dict, Any
-from src.gpt5_wrapper import GPT5Wrapper
+from src.unified_llm import UnifiedLLM
 
 
 class MarketAnalysisAgent:
     """Specialized agent for market analysis, competitive research, industry trends."""
 
     def __init__(self):
-        self.gpt5 = GPT5Wrapper()
+        self.llm = UnifiedLLM(agent_type="market")
         self.name = "market_analysis_agent"
         self.description = "Specialized agent for market analysis, competitive research, industry trends, market sizing, and customer segmentation."
 
@@ -74,12 +74,12 @@ Always base your analysis on data and provide actionable insights."""
             user_prompt += "\n- Example: 'SaaS churn averages 5-7% monthly (Source: Smith et al., 2024).'"
 
         try:
-            return self.gpt5.generate(
+            return self.llm.generate(
                 input_text=user_prompt,
                 instructions=self.system_prompt,
                 reasoning_effort="low",  # Fixed: "medium" uses all tokens for reasoning, no output
                 text_verbosity="high",
-                max_output_tokens=1500
+                max_tokens=1500
             )
 
         except Exception as e:

@@ -5,7 +5,7 @@ Retrieves and synthesizes academic research relevant to business queries.
 Acts as a preprocessing step to provide research-backed context to specialist agents.
 """
 
-from src.gpt5_wrapper import GPT5Wrapper
+from src.unified_llm import UnifiedLLM
 from src.tools.research_retrieval import ResearchRetriever
 from typing import Dict, Any, List
 
@@ -23,7 +23,7 @@ class ResearchSynthesisAgent:
 
     def __init__(self):
         """Initialize the Research Synthesis Agent."""
-        self.gpt5 = GPT5Wrapper()
+        self.llm = UnifiedLLM(agent_type="research_synthesis")
         self.retriever = ResearchRetriever()
         self.name = "research_synthesis"
         self.description = "Academic research retrieval and synthesis for evidence-backed recommendations"
@@ -128,12 +128,12 @@ Example: "Customer churn is driven primarily by poor onboarding (Source: Smith e
 - [Gaps in research]
 """
 
-        synthesis = self.gpt5.generate(
+        synthesis = self.llm.generate(
             input_text=synthesis_prompt,
             instructions=self.system_prompt,
             reasoning_effort="low",       # Fixed: "high" uses all tokens for reasoning, no output
             text_verbosity="high",        # Comprehensive synthesis
-            max_output_tokens=1500
+            max_tokens=1500
         )
 
         # Step 4: Create lightweight context for downstream agents

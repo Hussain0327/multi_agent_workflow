@@ -1,13 +1,13 @@
 """Operations Audit Agent - specializes in process optimization and operational efficiency."""
 from typing import Dict, Any
-from src.gpt5_wrapper import GPT5Wrapper
+from src.unified_llm import UnifiedLLM
 
 
 class OperationsAuditAgent:
     """Specialized agent for operations audit and process optimization."""
 
     def __init__(self):
-        self.gpt5 = GPT5Wrapper()
+        self.llm = UnifiedLLM(agent_type="operations")
         self.name = "operations_audit_agent"
         self.description = "Specialized agent for operations audit, process optimization, efficiency analysis, workflow improvement, and operational excellence."
 
@@ -71,12 +71,12 @@ Provide specific, actionable recommendations with implementation priorities."""
             user_prompt += "\n- Include a 'References' section at the end with full citations"
 
         try:
-            return self.gpt5.generate(
+            return self.llm.generate(
                 input_text=user_prompt,
                 instructions=self.system_prompt,
                 reasoning_effort="low",  # Fixed: "medium" uses all tokens for reasoning, no output
                 text_verbosity="high",
-                max_output_tokens=1500
+                max_tokens=1500
             )
 
         except Exception as e:
