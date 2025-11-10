@@ -1,6 +1,12 @@
 import pytest
+import os
 from unittest.mock import Mock, MagicMock
 from typing import Dict, Any
+
+os.environ.setdefault('OPENAI_API_KEY', 'test-key')
+os.environ.setdefault('DEEPSEEK_API_KEY', 'test-key')
+os.environ.setdefault('MODEL_STRATEGY', 'gpt5')
+os.environ.setdefault('LANGCHAIN_TRACING_V2', 'false')
 
 
 @pytest.fixture
