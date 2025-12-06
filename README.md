@@ -538,10 +538,7 @@ mypy src/ --ignore-missing-imports
 
 ## Contact
 
-- **Author**: [Your Name]
-- **Email**: [Your Email]
-- **GitHub**: [Your GitHub Profile]
-- **Portfolio**: [Your Portfolio URL]
+- **Author**: Raja Hussain
 
 ---
 
